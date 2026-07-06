@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Бриф — сайт-приглашение</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{color-scheme:only light;--ink:#2C2622;--muted:#7C7168;--paper:#FAF7F2;--card:#FFF;--line:#EBE3D8;--accent:#B8966E;--accent-deep:#93744F;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Jost',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:660px;margin:0 auto;padding:48px 22px 60px;}
+  header{text-align:center;margin-bottom:34px;}
+  .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);}
+  h1{font-family:'Prata',serif;font-size:clamp(28px,6vw,40px);font-weight:400;margin-top:10px;}
+  .sub{color:var(--muted);font-weight:300;margin-top:12px;font-size:14px;}
+  fieldset{border:1px solid var(--line);border-radius:14px;padding:22px 22px 8px;margin-bottom:20px;background:var(--card);}
+  legend{font-family:'Prata',serif;font-size:18px;color:var(--accent-deep);padding:0 10px;}
+  label{display:block;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;font-weight:500;}
+  input,textarea,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px 14px;font-family:'Jost',sans-serif;font-size:15px;font-weight:300;color:var(--ink);background:var(--paper);outline:none;transition:border-color .2s;}
+  input:focus,textarea:focus,select:focus{border-color:var(--accent);}
+  textarea{resize:vertical;min-height:64px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .hint{font-size:12px;color:var(--muted);font-weight:300;margin-top:4px;}
+  .actions{position:sticky;bottom:0;background:linear-gradient(transparent,var(--paper) 40%);padding-top:20px;text-align:center;}
+  button{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:15px 34px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s;}
+  button:hover{background:var(--accent-deep);}
+  .ok{color:var(--accent-deep);font-size:13px;margin-top:10px;height:16px;}
+  @media(max-width:520px){.two{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Сайт-приглашение</span>
+    <h1>Бриф для пары</h1>
+    <p class="sub">Заполните, что знаете — остальное можно прислать позже. В конце нажмите «Скопировать» и отправьте мне текст в мессенджере.</p>
+  </header>
+
+  <form id="brief">
+    <fieldset>
+      <legend>Пара и стиль</legend>
+      <div class="two">
+        <div><label>Имя невесты</label><input data-q="Невеста"></div>
+        <div><label>Имя жениха</label><input data-q="Жених"></div>
+      </div>
+      <label>Как подписывать (официально / ласково)</label><input data-q="Подпись имён" placeholder="Например: Айрат и Ирина">
+      <label>Выбранный шаблон / стиль</label>
+      <select data-q="Шаблон"><option value="">— выбрать —</option><option>Бордо / кардио</option><option>Нюд / шампань</option><option>Эвкалипт / зелень</option><option>Минимал ч/б</option><option>Пудра / розовое золото</option><option>Дасти блю / небо</option><option>Терракота / бохо</option><option>Тёмный люкс / золото</option><option>Свой вариант</option></select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Дата и места</legend>
+      <label>Дата свадьбы</label><input data-q="Дата" placeholder="ДД.ММ.ГГГГ">
+      <label>Церемония / роспись — адрес</label><input data-q="Церемония адрес" placeholder="Город, улица, дом">
+      <label>Банкет — название и адрес</label><input data-q="Банкет адрес" placeholder="Ресторан, город, улица">
+    </fieldset>
+
+    <fieldset>
+      <legend>Тайминг дня</legend>
+      <div class="two">
+        <div><label>Сбор гостей</label><input data-q="Сбор" placeholder="чч:мм"></div>
+        <div><label>Церемония / роспись</label><input data-q="Церемония время" placeholder="чч:мм"></div>
+      </div>
+      <div class="two">
+        <div><label>Банкет</label><input data-q="Банкет время" placeholder="чч:мм"></div>
+        <div><label>Другое (торт и т.п.)</label><input data-q="Другое время" placeholder="чч:мм — что"></div>
+      </div>
+      <p class="hint">Если есть нюансы (фотосессия, приехать заранее) — напишите ниже.</p>
+      <label>Заметки по таймингу</label><textarea data-q="Заметки тайминг"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Дресс-код и пожелания</legend>
+      <label>Цвета дресс-кода</label><input data-q="Дресс-код" placeholder="Например: пудра, беж, олива">
+      <label>Пожелания гостям</label><textarea data-q="Пожелания" placeholder="Подарки вместо цветов, без криков «Горько», без детей и т.п."></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Анкета гостей</legend>
+      <label>Варианты еды</label><input data-q="Еда" placeholder="Курица, рыба, мясо">
+      <label>Варианты напитков</label><input data-q="Алкоголь" placeholder="Шампанское, вино, виски, водка">
+      <label>Срок ответа гостей (RSVP до…)</label><input data-q="RSVP до" placeholder="ДД.ММ.ГГГГ">
+    </fieldset>
+
+    <fieldset>
+      <legend>Техническое</legend>
+      <label>Куда присылать ответы гостей</label>
+      <select data-q="Ответы куда"><option value="">— выбрать —</option><option>Google-таблица</option><option>Telegram-бот</option><option>На почту</option></select>
+      <label>Почта / телеграм для связи</label><input data-q="Контакт">
+      <label>Фото пары</label><input data-q="Фото" placeholder="Пришлю отдельно / есть / не нужно">
+      <label>Желаемое имя сайта (адрес)</label><input data-q="Имя сайта" placeholder="например: airat-irina">
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" onclick="copyBrief()">Скопировать ответы</button>
+      <div class="ok" id="ok"></div>
+    </div>
+  </form>
+</div>
+<script>
+function copyBrief(){
+  const parts=['БРИФ — САЙТ-ПРИГЛАШЕНИЕ',''];
+  document.querySelectorAll('[data-q]').forEach(el=>{
+    const v=(el.value||'').trim();
+    if(v) parts.push(el.getAttribute('data-q')+': '+v);
+  });
+  const text=parts.join('\n');
+  navigator.clipboard.writeText(text).then(()=>{
+    document.getElementById('ok').textContent='Скопировано — вставьте в сообщение и отправьте ✓';
+  },()=>{
+    document.getElementById('ok').textContent='Выделите и скопируйте вручную:';
+    const ta=document.createElement('textarea');ta.value=text;ta.style.width='100%';ta.style.height='160px';ta.style.marginTop='10px';
+    document.querySelector('.actions').appendChild(ta);ta.select();
+  });
+}
+</script>
+</body>
+</html>

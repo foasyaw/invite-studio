@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Сайты-приглашения на свадьбу — стильно и за пару дней</title>
+<meta name="description" content="Стильный сайт-приглашение вместо бумажных конвертов: программа дня, карта, подтверждение гостей и анкета — по одной ссылке.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  ✏️ ЗАПОЛНИ ПЕРЕД ПУБЛИКАЦИЕЙ (найди по значку ✏️ ниже):
+    1) 5 ссылок на демо-сайты (кнопки «Смотреть демо»)
+    2) свой Telegram в кнопках «Оставить заявку» (t.me/username)
+    3) ссылку на бриф и прайс, если выложишь их отдельно
+    4) название студии / своё имя в шапке и подвале
+  ═══════════════════════════════════════════════════════════════════
+-->
+<style>
+  :root{color-scheme:only light;--ink:#2A2420;--muted:#7C7168;--faint:#AEA298;--paper:#FAF7F2;--card:#FFF;--line:#EBE3D8;--accent:#B8966E;--accent-deep:#93744F;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  .display{font-family:'Prata',serif;}
+  .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);}
+  h1{font-family:'Prata',serif;font-weight:400;font-size:clamp(34px,7vw,64px);line-height:1.08;margin-top:14px;}
+  h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(26px,5vw,40px);}
+  .btn{display:inline-block;text-decoration:none;border-radius:999px;padding:15px 30px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:all .2s;cursor:pointer;border:1px solid var(--accent);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-deep);border-color:var(--accent-deep);}
+  .btn-ghost{background:transparent;color:var(--accent-deep);}
+  .btn-ghost:hover{background:var(--accent);color:#fff;}
+
+  /* hero */
+  .hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;background:radial-gradient(ellipse 70% 55% at 50% 10%,rgba(184,150,110,.1),transparent 70%),var(--card);}
+  .hero p.sub{color:var(--muted);font-weight:300;max-width:540px;margin:20px auto 0;font-size:17px;}
+  .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .brandmark{font-family:'Prata',serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-deep);}
+
+  section.blk{padding:84px 0;}
+  .sec-head{text-align:center;margin-bottom:46px;}
+  .sec-head .eyebrow{margin-bottom:8px;display:block;}
+
+  /* styles grid */
+  .styles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+  .scard{--a:#B8966E;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 22px 54px -36px rgba(42,36,32,.4);transition:transform .25s,box-shadow .25s;}
+  .scard:hover{transform:translateY(-5px);box-shadow:0 30px 64px -34px rgba(42,36,32,.4);}
+  .scard .top{height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;}
+  .scard .mono{font-family:'Prata',serif;font-size:26px;color:var(--a);}
+  .scard .orn svg{display:block;}
+  .scard .orn path,.scard .orn circle,.scard .orn line{stroke:var(--a);fill:none;}
+  .dots{display:flex;gap:7px;}
+  .dots span{width:16px;height:16px;border-radius:50%;box-shadow:0 2px 6px -2px rgba(0,0,0,.3);}
+  .scard .body{padding:22px 22px 24px;border-top:1px solid var(--line);text-align:center;}
+  .scard .body h3{font-family:'Prata',serif;font-weight:400;font-size:20px;}
+  .scard .body p{color:var(--muted);font-weight:300;font-size:13.5px;margin:8px 0 18px;min-height:38px;}
+  .scard .body a{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--a);text-decoration:none;border:1px solid var(--a);border-radius:999px;padding:10px 22px;transition:all .2s;}
+  .scard .body a:hover{background:var(--a);color:#fff;}
+
+  /* features */
+  .feats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+  .chip{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:9px 18px;background:var(--card);}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;}
+  .step{text-align:center;padding:8px;}
+  .step .n{font-family:'Prata',serif;font-size:40px;color:var(--accent);line-height:1;}
+  .step h4{font-size:15px;letter-spacing:.5px;margin:12px 0 8px;text-transform:uppercase;}
+  .step p{color:var(--muted);font-weight:300;font-size:14px;}
+
+  /* pricing */
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;text-align:center;}
+  .pcard.hl{border-color:var(--accent);box-shadow:0 24px 56px -32px rgba(184,150,110,.5);}
+  .pcard h3{font-family:'Prata',serif;font-weight:400;font-size:22px;}
+  .pcard .p{font-family:'Prata',serif;font-size:30px;color:var(--accent-deep);margin:10px 0 2px;}
+  .pcard .p small{font-size:14px;color:var(--muted);}
+  .pcard .t{font-size:12px;color:var(--faint);}
+
+  /* cta band */
+  .band{background:linear-gradient(135deg,var(--accent-deep),var(--accent));color:#fff;text-align:center;padding:70px 24px;border-radius:22px;margin:0 24px;}
+  .band h2{color:#fff;}
+  .band p{opacity:.9;font-weight:300;max-width:480px;margin:14px auto 26px;}
+  .band .btn{background:#fff;color:var(--accent-deep);border-color:#fff;}
+  .band .btn:hover{background:rgba(255,255,255,.88);}
+
+  footer{text-align:center;padding:50px 24px;color:var(--faint);font-size:13px;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.vis{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="brandmark">Студия сайтов-приглашений</div><!-- ✏️ название/имя -->
+  <h1>Свадебное приглашение,<br>которое хочется открыть</h1>
+  <p class="sub">Стильный сайт вместо бумажных конвертов: программа дня, карта, подтверждение гостей и анкета — всё по одной ссылке.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="#styles">Смотреть стили</a>
+    <a class="btn btn-ghost" href="https://t.me/invite_studio_bot" target="_blank">Оставить заявку</a><!-- ✏️ твой Telegram -->
+  </div>
+</section>
+
+<!-- STYLES -->
+<section class="blk" id="styles">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Двадцать стилей</span><h2>Выберите настроение</h2></div>
+    <div class="styles">
+
+      <div class="scard reveal" style="--a:#B8966E;">
+        <div class="top" style="background:linear-gradient(135deg,#F6EFE4,#EADBC6);">
+          <div class="mono">Аа</div>
+          <div class="orn"><svg width="110" height="16" viewBox="0 0 110 16"><line x1="0" y1="8" x2="44" y2="8" stroke-width="1"/><path d="M55 2 l4 6 -4 6 -4-6 z" stroke-width="1"/><line x1="66" y1="8" x2="110" y2="8" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#ECDCC2"></span><span style="background:#C9A98A"></span><span style="background:#8C6E52"></span></div>
+        </div>
+        <div class="body"><h3>Нюд / шампань</h3><p>Тёплый беж, тонкие линии, спокойная элегантность.</p><a href="./demo-nude.html" target="_blank">Смотреть демо</a></div><!-- ✏️ ссылка демо -->
+      </div>
+
+      <div class="scard reveal" style="--a:#6E7F52;">
+        <div class="top" style="background:linear-gradient(135deg,#EBF0E1,#CBD8B4);">
+          <div class="mono">Аа</div>
+          <div class="orn"><svg width="90" height="26" viewBox="0 0 90 26"><path d="M45 24 V4" stroke-width="1"/><path d="M45 9 c-5 0-8-3-8-3 c3 0 6 1 8 3 z" stroke-width="1"/><path d="M45 14 c5 0 8-3 8-3 c-3 0-6 1-8 3 z" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#DCE4D2"></span><span style="background:#A9B78F"></span><span style="background:#556042"></span></div>
+        </div>
+        <div class="body"><h3>Эвкалипт / зелень</h3><p>Ботаника, веточки эвкалипта, натуральность.</p><a href="./demo-green.html" target="_blank">Смотреть демо</a></div><!-- ✏️ -->
+      </div>
+
+      <div class="scard reveal" style="--a:#111;">
+        <div class="top" style="background:linear-gradient(135deg,#F4F4F4,#DEDEDE);">
+          <div class="mono" style="font-family:'Jost';font-weight:600;letter-spacing:-1px;">Аа</div>
+          <div class="orn"><svg width="90" height="8" viewBox="0 0 90 8"><line x1="0" y1="4" x2="90" y2="4" stroke-width="2"/></svg></div>
+          <div class="dots"><span style="background:#fff;border:1px solid #ddd"></span><span style="background:#8C8C8C"></span><span style="background:#111"></span></div>
+        </div>
+        <div class="body"><h3>Минимал ч/б</h3><p>Крупная типографика, строгие линии, монохром.</p><a href="./demo-minimal.html" target="_blank">Смотреть демо</a></div><!-- ✏️ -->
+      </div>
+
+      <div class="scard reveal" style="--a:#B76E79;">
+        <div class="top" style="background:linear-gradient(135deg,#FBEBED,#EFC7CE);">
+          <div class="mono">Аа</div>
+          <div class="orn"><svg width="90" height="20" viewBox="0 0 90 20"><line x1="0" y1="10" x2="34" y2="10" stroke-width="1"/><path d="M45 18 l-1.2-1.2 c-2.9-2.9-6-4.9-6-7.8 a3.6 3.6 0 0 1 3.6-3.6 c1.6 0 2.8 .8 3.6 2 c.8-1.2 2-2 3.6-2 a3.6 3.6 0 0 1 3.6 3.6 c0 2.9-3.1 5-6 7.8 z" stroke-width="1.2"/><line x1="56" y1="10" x2="90" y2="10" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#F3DCDE"></span><span style="background:#D98C99"></span><span style="background:#B76E79"></span></div>
+        </div>
+        <div class="body"><h3>Пудра / розовое золото</h3><p>Мягкий блаш, сердечки, романтичный скрипт.</p><a href="./demo-blush.html" target="_blank">Смотреть демо</a></div><!-- ✏️ -->
+      </div>
+
+      <div class="scard reveal" style="--a:#7B1C2E;">
+        <div class="top" style="background:linear-gradient(135deg,#F5E6E8,#E2C0C6);">
+          <div class="mono">Аа</div>
+          <div class="orn"><svg width="120" height="20" viewBox="0 0 120 20"><path d="M0 10 L34 10 L40 4 L46 16 L52 10 L60 10" stroke-width="1.3"/><path d="M69 17 l-1.1-1.1 c-2.6-2.6-5.4-4.4-5.4-7 a3.2 3.2 0 0 1 3.2-3.2 c1.4 0 2.5 .7 3.2 1.8 c.7-1.1 1.8-1.8 3.2-1.8 a3.2 3.2 0 0 1 3.2 3.2 c0 2.6-2.8 4.4-5.4 7 z" stroke-width="1.3"/><path d="M78 10 L86 10 L92 4 L98 16 L104 10 L120 10" stroke-width="1.3"/></svg></div>
+          <div class="dots"><span style="background:#D4A0AB"></span><span style="background:#7B1C2E"></span><span style="background:#1E1A1B"></span></div>
+        </div>
+        <div class="body"><h3>Бордо / кардио</h3><p>Кардиограмма-сердцебиение, глубокий бордо.</p><a href="./demo-bordo.html" target="_blank">Смотреть демо</a></div><!-- ✏️ -->
+      </div>
+
+      <div class="scard reveal" style="--a:#7A93AC;">
+        <div class="top" style="background:linear-gradient(135deg,#EAF1F7,#C6D6E5);">
+          <div class="mono">Аа</div>
+          <div class="orn"><svg width="110" height="16" viewBox="0 0 110 16"><path d="M0 8 Q27 2 55 8 T110 8" stroke-width="1.1" fill="none"/><circle cx="55" cy="8" r="2.2" stroke-width="1.1" fill="none"/></svg></div>
+          <div class="dots"><span style="background:#DFE8F0"></span><span style="background:#AFC3D6"></span><span style="background:#4C637B"></span></div>
+        </div>
+        <div class="body"><h3>Дасти блю / небо</h3><p>Приглушённый голубой, воздух и лёгкость.</p><a href="./demo-dusty.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#C4653A;">
+        <div class="top" style="background:linear-gradient(135deg,#F8E9DA,#EBC3A4);">
+          <div class="mono">Аа</div>
+          <div class="orn"><svg width="90" height="22" viewBox="0 0 90 22"><path d="M31 16 a14 14 0 0 1 28 0" stroke-width="1.2" fill="none"/><line x1="45" y1="2" x2="45" y2="5" stroke-width="1" /><line x1="0" y1="16" x2="24" y2="16" stroke-width="1" opacity=".5"/><line x1="66" y1="16" x2="90" y2="16" stroke-width="1" opacity=".5"/></svg></div>
+          <div class="dots"><span style="background:#F1DFC8"></span><span style="background:#C4653A"></span><span style="background:#8A5A44"></span></div>
+        </div>
+        <div class="body"><h3>Терракота / бохо</h3><p>Тёплая охра, арки и солнце — уютное бохо.</p><a href="./demo-terra.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#C9A24B;">
+        <div class="top" style="background:linear-gradient(135deg,#211D18,#3A332A);">
+          <div class="mono" style="color:#C9A24B;">Аа</div>
+          <div class="orn"><svg width="110" height="18" viewBox="0 0 110 18"><line x1="0" y1="9" x2="42" y2="9" stroke-width="1"/><path d="M55 2 L57 7 L62 9 L57 11 L55 16 L53 11 L48 9 L53 7 Z" stroke-width="1" fill="none"/><line x1="68" y1="9" x2="110" y2="9" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#0E0C0A"></span><span style="background:#C9A24B"></span><span style="background:#D9CDB6"></span></div>
+        </div>
+        <div class="body"><h3>Тёмный люкс / золото</h3><p>Уголь и золото — вечернее торжество.</p><a href="./demo-noir.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#1E6E5C;">
+        <div class="top" style="background:linear-gradient(135deg,#0F3B32,#1E6E5C);">
+          <div class="mono" style="color:#D9B45B;">Аа</div>
+          <div class="orn"><svg width="100" height="20" viewBox="0 0 100 20"><circle cx="50" cy="10" r="7" stroke-width="1" fill="none"/><line x1="0" y1="10" x2="38" y2="10" stroke-width="1"/><line x1="62" y1="10" x2="100" y2="10" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#0F3B32"></span><span style="background:#D9B45B"></span><span style="background:#F2E7CE"></span></div>
+        </div>
+        <div class="body"><h3>Изумруд / золото</h3><p>Драгоценный люкс: мерцающий медальон, филигрань.</p><a href="./demo-royal.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#B08D3E;">
+        <div class="top" style="background:linear-gradient(135deg,#14141C,#2A2A38);">
+          <div class="mono" style="color:#D8B45A;">Аа</div>
+          <div class="orn"><svg width="100" height="20" viewBox="0 0 100 20"><path d="M50 18 L42 4 L50 9 L58 4 Z" stroke-width="1" fill="none"/><line x1="0" y1="14" x2="34" y2="14" stroke-width="1"/><line x1="66" y1="14" x2="100" y2="14" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#14141C"></span><span style="background:#D8B45A"></span><span style="background:#EDE3CF"></span></div>
+        </div>
+        <div class="body"><h3>Ар-деко / Гэтсби</h3><p>Веер лучей, геометрия и блеск двадцатых.</p><a href="./demo-deco.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#7A6AE0;">
+        <div class="top" style="background:linear-gradient(135deg,#8E7BF0,#E08BB4,#F0B98B);">
+          <div class="mono" style="color:#fff;">Аа</div>
+          <div class="orn"><svg width="100" height="16" viewBox="0 0 100 16"><line x1="0" y1="8" x2="38" y2="8" stroke-width="1.4" opacity=".8"/><circle cx="50" cy="8" r="4" stroke-width="1.4" fill="none"/><line x1="62" y1="8" x2="100" y2="8" stroke-width="1.4" opacity=".8"/></svg></div>
+          <div class="dots"><span style="background:#8E7BF0"></span><span style="background:#E08BB4"></span><span style="background:#F0B98B"></span></div>
+        </div>
+        <div class="body"><h3>Живой градиент</h3><p>Движущиеся переливы и стеклянная карточка.</p><a href="./demo-aurora.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#7A4E2D;">
+        <div class="top" style="background:linear-gradient(135deg,#F3E4D3,#D8B894);">
+          <div class="mono" style="color:#5C3A21;">Аа</div>
+          <div class="orn"><svg width="100" height="22" viewBox="0 0 100 22"><ellipse cx="50" cy="11" rx="6" ry="9" stroke-width="1.1" fill="none"/><line x1="50" y1="3" x2="50" y2="19" stroke-width="1"/><line x1="0" y1="11" x2="38" y2="11" stroke-width="1"/><line x1="62" y1="11" x2="100" y2="11" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#EBD8BF"></span><span style="background:#A8713F"></span><span style="background:#5C3A21"></span></div>
+        </div>
+        <div class="body"><h3>Шоколад / латте</h3><p>Тёплая карамель, восковая печать, какао-пыльца.</p><a href="./demo-cacao.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#B3261E;">
+        <div class="top" style="background:linear-gradient(135deg,#F5F1E6,#DED4BC);">
+          <div class="mono" style="font-family:Georgia,serif;font-weight:900;">Аа</div>
+          <div class="orn"><svg width="100" height="12" viewBox="0 0 100 12"><line x1="0" y1="3" x2="100" y2="3" stroke-width="2.2"/><line x1="0" y1="9" x2="100" y2="9" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#F1EBDC"></span><span style="background:#B3261E"></span><span style="background:#1F1D18"></span></div>
+        </div>
+        <div class="body"><h3>Газета / спецвыпуск</h3><p>Первая полоса: колонки, буквица, штамп «срочно в номер».</p><a href="./demo-gazette.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#FF2E88;">
+        <div class="top" style="background:linear-gradient(135deg,#0B0D13,#1E1030);">
+          <div class="mono" style="color:#FF2E88;text-shadow:0 0 10px #FF2E88;">Аа</div>
+          <div class="orn"><svg width="100" height="16" viewBox="0 0 100 16"><line x1="0" y1="8" x2="38" y2="8" stroke-width="1.3" opacity=".7"/><circle cx="50" cy="8" r="4" stroke-width="1.3" fill="none"/><line x1="62" y1="8" x2="100" y2="8" stroke-width="1.3" opacity=".7"/></svg></div>
+          <div class="dots"><span style="background:#0B0D13"></span><span style="background:#FF2E88"></span><span style="background:#38E5FF"></span></div>
+        </div>
+        <div class="body"><h3>Неон / вечеринка</h3><p>Мигающая неоновая вывеска — ночь, клуб, танцы.</p><a href="./demo-neon.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#8FB0FF;">
+        <div class="top" style="background:linear-gradient(135deg,#0A0F22,#1B2547);">
+          <div class="mono" style="color:#C8D6FF;">Аа</div>
+          <div class="orn"><svg width="100" height="20" viewBox="0 0 100 20"><path d="M50 3 L52 8 L57 10 L52 12 L50 17 L48 12 L43 10 L48 8 Z" stroke-width="1" fill="none"/><line x1="0" y1="10" x2="36" y2="10" stroke-width="1" opacity=".6"/><line x1="64" y1="10" x2="100" y2="10" stroke-width="1" opacity=".6"/></svg></div>
+          <div class="dots"><span style="background:#0A0F22"></span><span style="background:#8FB0FF"></span><span style="background:#C8D6FF"></span></div>
+        </div>
+        <div class="body"><h3>Космос / созвездие</h3><p>Две звезды нашли друг друга: созвездия, падающая звезда.</p><a href="./demo-cosmos.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#1B6FA8;">
+        <div class="top" style="background:linear-gradient(135deg,#DCEAF5,#A9C9E0);">
+          <div class="mono" style="color:#16324F;">Аа</div>
+          <div class="orn"><svg width="110" height="16" viewBox="0 0 110 16"><line x1="0" y1="8" x2="40" y2="8" stroke-width="1.1" stroke-dasharray="5 4"/><path d="M50 8 l14-5 -4 5 4 5 z" stroke-width="1" fill="none"/><line x1="70" y1="8" x2="110" y2="8" stroke-width="1.1" stroke-dasharray="5 4"/></svg></div>
+          <div class="dots"><span style="background:#E8F1F8"></span><span style="background:#1B6FA8"></span><span style="background:#0E3A57"></span></div>
+        </div>
+        <div class="body"><h3>Авиабилет / путешествие</h3><p>Посадочный талон «Я → МЫ», самолёт, штрих-код.</p><a href="./demo-voyage.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#C8102E;">
+        <div class="top" style="background:linear-gradient(135deg,#FFFFFF,#E3E3DE);">
+          <div class="mono" style="font-weight:600;letter-spacing:2px;">Аа</div>
+          <div class="orn"><svg width="100" height="10" viewBox="0 0 100 10"><line x1="0" y1="5" x2="100" y2="5" stroke-width="2.2"/></svg></div>
+          <div class="dots"><span style="background:#FFFFFF;border:1px solid #ddd"></span><span style="background:#C8102E"></span><span style="background:#141414"></span></div>
+        </div>
+        <div class="body"><h3>Глянец / обложка</h3><p>Журнальная обложка: логотип-шапка, анонсы, алая плашка.</p><a href="./demo-vogue.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#7C90C9;">
+        <div class="top" style="background:linear-gradient(135deg,#E9EEF9,#F3DCE4,#DFF0E4);">
+          <div class="mono" style="color:#5C70A8;">Аа</div>
+          <div class="orn"><svg width="100" height="14" viewBox="0 0 100 14"><path d="M0 8 Q25 3 50 8 T100 8" stroke-width="1.2" fill="none"/></svg></div>
+          <div class="dots"><span style="background:#DEE7F5"></span><span style="background:#F3DCE4"></span><span style="background:#CBB9DD"></span></div>
+        </div>
+        <div class="body"><h3>Акварель / нежность</h3><p>Дышащие пастельные пятна и фото-«капля».</p><a href="./demo-aquarelle.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#C75146;">
+        <div class="top" style="background:linear-gradient(135deg,#F3EBDD,#DECBA8);">
+          <div class="mono" style="color:#C75146;">Аа</div>
+          <div class="orn"><svg width="100" height="20" viewBox="0 0 100 20"><circle cx="50" cy="10" r="8" stroke-width="1.2" fill="none"/><circle cx="50" cy="10" r="2.4" stroke-width="1.1" fill="none"/><line x1="0" y1="10" x2="36" y2="10" stroke-width="1"/><line x1="64" y1="10" x2="100" y2="10" stroke-width="1"/></svg></div>
+          <div class="dots"><span style="background:#F0E6D2"></span><span style="background:#C75146"></span><span style="background:#221D18"></span></div>
+        </div>
+        <div class="body"><h3>Винил / ретро-музыка</h3><p>Крутящаяся пластинка, программа дня — треклист.</p><a href="./demo-vinyl.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+      <div class="scard reveal" style="--a:#3E6C94;">
+        <div class="top" style="background:linear-gradient(135deg,#EFE6D5,#DCC9A6);">
+          <div class="mono" style="color:#3E6C94;">Аа</div>
+          <div class="orn"><svg width="100" height="16" viewBox="0 0 100 16"><path d="M3 10 C28 4 48 14 60 8 C72 2 88 13 97 7" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+          <div class="dots"><span style="background:#F3E9D5"></span><span style="background:#3E6C94"></span><span style="background:#C97F6B"></span></div>
+        </div>
+        <div class="body"><h3>Скрапбук / альбом</h3><p>Полароид на скотче, рукописные заметки, дудлы.</p><a href="./demo-scrap.html" target="_blank">Смотреть демо</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="blk" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">В каждом сайте</span><h2>Всё, что нужно паре</h2></div>
+    <div class="feats reveal">
+      <span class="chip">Подтверждение гостей (RSVP)</span>
+      <span class="chip">Анкета: еда и напитки</span>
+      <span class="chip">Обратный отсчёт</span>
+      <span class="chip">Интерактивная карта</span>
+      <span class="chip">Дресс-код</span>
+      <span class="chip">Ответы в Google-таблицу</span>
+      <span class="chip">Ваша фотография</span>
+      <span class="chip">Адаптив под телефон</span>
+      <span class="chip">Красивые анимации</span>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="blk">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Как это работает</span><h2>Четыре шага</h2></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4>Выбираете стиль</h4><p>Смотрите демо и выбираете настроение свадьбы.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>Заполняете бриф</h4><p>Короткая анкета: даты, места, пожелания.</p></div>
+      <div class="step reveal"><div class="n">3</div><h4>Я собираю сайт</h4><p>1–3 дня — и присылаю готовую ссылку.</p></div>
+      <div class="step reveal"><div class="n">4</div><h4>Рассылаете гостям</h4><p>Ответы гостей приходят вам автоматически.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="blk" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Стоимость</span><h2>Тарифы</h2></div>
+    <div class="prices">
+      <div class="pcard reveal"><h3>Шаблон</h3><div class="p">3 500 <small>₽</small></div><div class="t">готово за 1–2 дня</div></div>
+      <div class="pcard hl reveal"><h3>Стандарт</h3><div class="p">5 900 <small>₽</small></div><div class="t">палитра под вас, ваше фото</div></div>
+      <div class="pcard reveal"><h3>Индивидуальный</h3><div class="p">от 14 900 <small>₽</small></div><div class="t">уникальный дизайн</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="blk">
+  <div class="band reveal">
+    <h2>Готовы начать?</h2>
+    <p>Напишите — подберём стиль, обсудим детали и соберём ваш сайт-приглашение.</p>
+    <a class="btn" href="https://t.me/invite_studio_bot" target="_blank">Оставить заявку</a><!-- ✏️ твой Telegram -->
+  </div>
+</section>
+
+<footer>
+  © <span id="yr"></span> Студия сайтов-приглашений<!-- ✏️ -->
+</footer>
+
+<script>
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

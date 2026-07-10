@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#14120F">
 <title>Айрат & Ирина — приглашение на свадьбу</title>
 <meta name="description" content="Приглашение на свадьбу · 3 сентября 2026">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20d%3D%22M16%2027l-1.9-1.8C7.4%2019.1%203%2015.1%203%2010.2%203%206.5%205.9%203.6%209.6%203.6c2.1%200%204.1%201%205.4%202.5l1%201.2%201-1.2c1.3-1.5%203.3-2.5%205.4-2.5%203.7%200%206.6%202.9%206.6%206.6%200%204.9-4.4%208.9-10.1%2015z%22%20fill%3D%22%23C9A24B%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20d%3D%22M16%2027.5%20C8.5%2021.5%204%2017.2%204%2012%20A5.6%205.6%200%200%201%209.6%206.4%20C12%206.4%2014.3%207.8%2016%2010%20C17.7%207.8%2020%206.4%2022.4%206.4%20A5.6%205.6%200%200%201%2028%2012%20C28%2017.2%2023.5%2021.5%2016%2027.5%20Z%22%20fill%3D%22%23C9A24B%22%2F%3E%3C%2Fsvg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Айрат и Ирина — приглашение на свадьбу">
 <meta property="og:description" content="Мы женимся 3 сентября 2026. Нажмите, чтобы открыть приглашение.">
@@ -52,7 +52,11 @@
   .orn path,.orn circle,.orn line,.orn ellipse{stroke:var(--accent);fill:none;}
 
   /* hero */
-  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 28px 56px;position:relative;background:radial-gradient(ellipse 75% 55% at 50% 8%,rgba(201,162,75,.14),transparent 70%),var(--card);}
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 28px 56px;position:relative;overflow:hidden;background:radial-gradient(ellipse 75% 55% at 50% 8%,rgba(201,162,75,.14),transparent 70%),var(--card);}
+  /* декор не должен растягивать страницу вбок */
+  html{overflow-x:hidden;}
+  @supports (overflow-x:clip){html{overflow-x:clip;}}
+  body{max-width:100%;}
   .hero .eyebrow{animation:fadeUp .9s ease both;margin-bottom:22px;}
   .hero-names{font-family:var(--ff-display);font-weight:500;font-size:clamp(44px,12vw,88px);line-height:1.03;color:var(--ink);animation:fadeUp .9s ease .1s both;}
   .hero-names .amp{font-family:var(--ff-accent);font-weight:400;color:var(--accent);margin:0 .08em;}
@@ -375,7 +379,7 @@
 <div id="welcome" role="dialog" aria-label="Приглашение">
   <div class="wl-card">
     <div class="wl-guest" id="wl-guest" hidden></div>
-    <svg class="wl-heart beat" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28 l-2.1-2.1 C8.6 20.7 3 16.5 3 11.4 A6.4 6.4 0 0 1 9.4 5 c2.8 0 4.9 1.5 6.6 3.6 C17.7 6.5 19.8 5 22.6 5 A6.4 6.4 0 0 1 29 11.4 c0 5.1-5.6 9.3-10.9 14.5 z" stroke-width="1.4"/></svg>
+    <svg class="wl-heart beat" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27.5 C8.5 21.5 4 17.2 4 12 A5.6 5.6 0 0 1 9.6 6.4 C12 6.4 14.3 7.8 16 10 C17.7 7.8 20 6.4 22.4 6.4 A5.6 5.6 0 0 1 28 12 C28 17.2 23.5 21.5 16 27.5 Z" stroke-width="1.5"/></svg>
     <div class="wl-names">Айрат <span class="amp">&amp;</span> Ирина</div>
     <div class="wl-orn"><svg width="130" height="20" viewBox="0 0 130 20"><line x1="0" y1="10" x2="50" y2="10" stroke-width="1" opacity=".6"/><path class="ic-twinkle" d="M65 2 L67.3 7.7 L73 10 L67.3 12.3 L65 18 L62.7 12.3 L57 10 L62.7 7.7 Z" stroke-width="1"/><line x1="80" y1="10" x2="130" y2="10" stroke-width="1" opacity=".6"/></svg></div>
     <div class="wl-date">03.09.2026</div>

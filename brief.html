@@ -4,118 +4,305 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>Бриф — сайт-приглашение</title>
+<title>Бриф — заказать сайт-приглашение</title>
+<meta name="description" content="Выберите стиль и заполните короткий бриф — сайт-приглашение будет готов за 1–2 дня.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 27.5 C8.5 21.5 4 17.2 4 12 A5.6 5.6 0 0 1 9.6 6.4 C12 6.4 14.3 7.8 16 10 C17.7 7.8 20 6.4 22.4 6.4 A5.6 5.6 0 0 1 28 12 C28 17.2 23.5 21.5 16 27.5 Z' fill='%23B08D3E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Prata&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{color-scheme:only light;--ink:#2C2622;--muted:#7C7168;--paper:#FAF7F2;--card:#FFF;--line:#EBE3D8;--accent:#B8966E;--accent-deep:#93744F;}
+  :root{--ink:#1E1A15;--muted:#7A7167;--faint:#A9A096;--paper:#FBF8F3;--card:#FFF;--line:#EBE3D6;
+    --gold:#B08D3E;--gold-deep:#8C6E2C;--gold-soft:#DCC79A;--tint:rgba(176,141,62,.07);--ok:#4A8763;--err:#B3261E;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Jost',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:660px;margin:0 auto;padding:48px 22px 60px;}
-  header{text-align:center;margin-bottom:34px;}
-  .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);}
-  h1{font-family:'Prata',serif;font-size:clamp(28px,6vw,40px);font-weight:400;margin-top:10px;}
-  .sub{color:var(--muted);font-weight:300;margin-top:12px;font-size:14px;}
-  fieldset{border:1px solid var(--line);border-radius:14px;padding:22px 22px 8px;margin-bottom:20px;background:var(--card);}
-  legend{font-family:'Prata',serif;font-size:18px;color:var(--accent-deep);padding:0 10px;}
-  label{display:block;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;font-weight:500;}
-  input,textarea,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px 14px;font-family:'Jost',sans-serif;font-size:15px;font-weight:300;color:var(--ink);background:var(--paper);outline:none;transition:border-color .2s;}
-  input:focus,textarea:focus,select:focus{border-color:var(--accent);}
+  html{overflow-x:hidden;scroll-behavior:smooth;}
+  body{font-family:'Jost',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px 90px;}
+  ::selection{background:var(--gold);color:#fff;}
+  header{text-align:center;padding:52px 20px 8px;}
+  .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:500;}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,5.5vw,46px);margin-top:10px;}
+  header p{color:var(--muted);font-weight:300;max-width:520px;margin:12px auto 0;}
+  .back{display:inline-block;margin-top:14px;font-size:13px;color:var(--gold-deep);text-decoration:none;}
+
+  .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 26px;margin-top:22px;}
+  .step h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .step h2 .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;font-family:'Jost';font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+  .hint{font-size:13px;color:var(--faint);margin:-8px 0 14px;}
+
+  .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+  .sopt{position:relative;border:2px solid var(--line);border-radius:12px;padding:12px 10px 10px;cursor:pointer;text-align:center;background:var(--paper);transition:border-color .2s,transform .2s;}
+  .sopt:hover{transform:translateY(-2px);}
+  .sopt input{position:absolute;opacity:0;pointer-events:none;}
+  .sopt .dots{display:flex;gap:5px;justify-content:center;margin-bottom:8px;}
+  .sopt .dots i{width:14px;height:14px;border-radius:50%;box-shadow:0 1px 4px -1px rgba(0,0,0,.35);}
+  .sopt .nm{font-size:12.5px;font-weight:500;line-height:1.25;display:block;}
+  .sopt a{display:inline-block;font-size:11px;color:var(--gold-deep);margin-top:5px;}
+  .sopt.sel{border-color:var(--gold);background:var(--tint);}
+
+  label.f{display:block;margin-bottom:14px;}
+  label.f span{display:block;font-size:13px;font-weight:500;margin-bottom:5px;}
+  label.f small{color:var(--faint);font-weight:400;}
+  input[type=text],textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:15px;background:var(--paper);color:var(--ink);transition:border-color .2s;}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);}
+  input.bad{border-color:var(--err);}
   textarea{resize:vertical;min-height:64px;}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .hint{font-size:12px;color:var(--muted);font-weight:300;margin-top:4px;}
-  .actions{position:sticky;bottom:0;background:linear-gradient(transparent,var(--paper) 40%);padding-top:20px;text-align:center;}
-  button{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:15px 34px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s;}
-  button:hover{background:var(--accent-deep);}
-  .ok{color:var(--accent-deep);font-size:13px;margin-top:10px;height:16px;}
-  @media(max-width:520px){.two{grid-template-columns:1fr;}}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:560px){.row2{grid-template-columns:1fr;}}
+
+  .tarifs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
+  .topt{position:relative;border:2px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;background:var(--paper);transition:border-color .2s;}
+  .topt input{position:absolute;opacity:0;}
+  .topt b{display:block;font-size:15px;}
+  .topt .pr{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold-deep);display:block;}
+  .topt small{color:var(--muted);font-weight:300;font-size:12px;}
+  .topt.sel{border-color:var(--gold);background:var(--tint);}
+
+  .send{margin-top:26px;text-align:center;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--gold);border-radius:999px;padding:16px 34px;font:600 12px 'Jost';letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;margin:4px;}
+  .btn-primary{background:var(--gold);color:#fff;}
+  .btn-primary:hover{background:var(--gold-deep);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--gold-deep);}
+  .btn-ghost:hover{background:var(--gold);color:#fff;}
+  .send .or{margin:16px 0 8px;color:var(--faint);font-size:13px;}
+  #status{margin-top:16px;font-size:14px;display:none;}
+  #status.ok{display:block;color:var(--ok);}
+  #status.err{display:block;color:var(--err);}
+  .done{display:none;background:var(--card);border:1px solid var(--gold-soft);border-radius:18px;padding:34px 26px;margin-top:22px;text-align:center;}
+  .done h2{font-family:'Cormorant Garamond',serif;font-size:26px;margin-bottom:8px;}
+  .done p{color:var(--muted);font-weight:300;}
 </style>
 </head>
 <body>
+<header>
+  <span class="eyebrow">Бриф · 3 минуты</span>
+  <h1>Расскажите о вашей свадьбе</h1>
+  <p>Выберите стиль и заполните несколько полей — я соберу сайт и пришлю ссылку на согласование в течение 1–2 дней.</p>
+  <a class="back" href="./index.html">← ко всем стилям и ценам</a>
+</header>
+
 <div class="wrap">
-  <header>
-    <span class="eyebrow">Сайт-приглашение</span>
-    <h1>Бриф для пары</h1>
-    <p class="sub">Заполните, что знаете — остальное можно прислать позже. В конце нажмите «Скопировать» и отправьте мне текст в мессенджере.</p>
-  </header>
+<form id="brief" novalidate>
 
-  <form id="brief">
-    <fieldset>
-      <legend>Пара и стиль</legend>
-      <div class="two">
-        <div><label>Имя невесты</label><input data-q="Невеста"></div>
-        <div><label>Имя жениха</label><input data-q="Жених"></div>
-      </div>
-      <label>Как подписывать (официально / ласково)</label><input data-q="Подпись имён" placeholder="Например: Айрат и Ирина">
-      <label>Выбранный шаблон / стиль</label>
-      <select data-q="Шаблон"><option value="">— выбрать —</option><option>Бордо / кардио</option><option>Нюд / шампань</option><option>Эвкалипт / зелень</option><option>Минимал ч/б</option><option>Пудра / розовое золото</option><option>Дасти блю / небо</option><option>Терракота / бохо</option><option>Тёмный люкс / золото</option><option>Свой вариант</option></select>
-    </fieldset>
+  <div class="step">
+    <h2><span class="n">1</span>Выберите стиль</h2>
+    <div class="hint">Нажмите «демо», чтобы посмотреть живой пример в новой вкладке.</div>
+    <div class="sgrid" id="sgrid"></div>
+  </div>
 
-    <fieldset>
-      <legend>Дата и места</legend>
-      <label>Дата свадьбы</label><input data-q="Дата" placeholder="ДД.ММ.ГГГГ">
-      <label>Церемония / роспись — адрес</label><input data-q="Церемония адрес" placeholder="Город, улица, дом">
-      <label>Банкет — название и адрес</label><input data-q="Банкет адрес" placeholder="Ресторан, город, улица">
-    </fieldset>
-
-    <fieldset>
-      <legend>Тайминг дня</legend>
-      <div class="two">
-        <div><label>Сбор гостей</label><input data-q="Сбор" placeholder="чч:мм"></div>
-        <div><label>Церемония / роспись</label><input data-q="Церемония время" placeholder="чч:мм"></div>
-      </div>
-      <div class="two">
-        <div><label>Банкет</label><input data-q="Банкет время" placeholder="чч:мм"></div>
-        <div><label>Другое (торт и т.п.)</label><input data-q="Другое время" placeholder="чч:мм — что"></div>
-      </div>
-      <p class="hint">Если есть нюансы (фотосессия, приехать заранее) — напишите ниже.</p>
-      <label>Заметки по таймингу</label><textarea data-q="Заметки тайминг"></textarea>
-    </fieldset>
-
-    <fieldset>
-      <legend>Дресс-код и пожелания</legend>
-      <label>Цвета дресс-кода</label><input data-q="Дресс-код" placeholder="Например: пудра, беж, олива">
-      <label>Пожелания гостям</label><textarea data-q="Пожелания" placeholder="Подарки вместо цветов, без криков «Горько», без детей и т.п."></textarea>
-    </fieldset>
-
-    <fieldset>
-      <legend>Анкета гостей</legend>
-      <label>Варианты еды</label><input data-q="Еда" placeholder="Курица, рыба, мясо">
-      <label>Варианты напитков</label><input data-q="Алкоголь" placeholder="Шампанское, вино, виски, водка">
-      <label>Срок ответа гостей (RSVP до…)</label><input data-q="RSVP до" placeholder="ДД.ММ.ГГГГ">
-    </fieldset>
-
-    <fieldset>
-      <legend>Техническое</legend>
-      <label>Куда присылать ответы гостей</label>
-      <select data-q="Ответы куда"><option value="">— выбрать —</option><option>Google-таблица</option><option>Telegram-бот</option><option>На почту</option></select>
-      <label>Почта / телеграм для связи</label><input data-q="Контакт">
-      <label>Фото пары</label><input data-q="Фото" placeholder="Пришлю отдельно / есть / не нужно">
-      <label>Желаемое имя сайта (адрес)</label><input data-q="Имя сайта" placeholder="например: airat-irina">
-    </fieldset>
-
-    <div class="actions">
-      <button type="button" onclick="copyBrief()">Скопировать ответы</button>
-      <div class="ok" id="ok"></div>
+  <div class="step">
+    <h2><span class="n">2</span>О вас</h2>
+    <div class="row2">
+      <label class="f"><span>Имя жениха *</span><input type="text" name="n1" placeholder="Дмитрий"></label>
+      <label class="f"><span>Имя невесты *</span><input type="text" name="n2" placeholder="Анна"></label>
     </div>
-  </form>
+    <div class="row2">
+      <label class="f"><span>Дата свадьбы * <small>(ДД.ММ.ГГГГ)</small></span><input type="text" name="date" placeholder="12.09.2026" inputmode="numeric"></label>
+      <label class="f"><span>Время начала * <small>(ЧЧ:ММ)</small></span><input type="text" name="time" placeholder="14:00" inputmode="numeric"></label>
+    </div>
+    <div class="row2">
+      <label class="f"><span>Город *</span><input type="text" name="city" placeholder="Казань"></label>
+      <label class="f"><span>Ждёте ответы гостей до <small>(ДД.ММ.ГГГГ)</small></span><input type="text" name="rsvp" placeholder="01.08.2026"></label>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2><span class="n">3</span>Где празднуете</h2>
+    <label class="f"><span>Церемония / роспись — адрес *</span><input type="text" name="p1a" placeholder="ул. Баумана, 1 (ЗАГС)"></label>
+    <div class="row2">
+      <label class="f"><span>Время церемонии</span><input type="text" name="p1w" placeholder="14:00"></label>
+      <label class="f"><span>Примечание <small>(например, сбор гостей)</small></span><input type="text" name="p1note" placeholder="Сбор гостей к 13:40"></label>
+    </div>
+    <label class="f"><span>Банкет — название и адрес *</span><input type="text" name="p2a" placeholder="лофт «Небо», ул. Пушкина, 10"></label>
+    <div class="row2">
+      <label class="f"><span>Время банкета</span><input type="text" name="p2w" placeholder="17:00"></label>
+      <label class="f"><span>Город банкета <small>(если другой)</small></span><input type="text" name="city2" placeholder=""></label>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2><span class="n">4</span>Пожелания гостям</h2>
+    <div class="hint">Можно оставить как есть — это самые популярные формулировки.</div>
+    <label class="f"><span>Пожелание 1</span><textarea name="w1">Мы будем рады, если вместо цветов вы подарите нам бутылку вина для нашей семейной винотеки.</textarea></label>
+    <label class="f"><span>Пожелание 2</span><textarea name="w2">От всего сердца просим воздержаться от криков «Горько!» и сохранить атмосферу тёплого праздника.</textarea></label>
+  </div>
+
+  <div class="step">
+    <h2><span class="n">5</span>Тариф и связь</h2>
+    <div class="tarifs" id="tarifs">
+      <label class="topt"><input type="radio" name="tariff" value="Шаблон — 3500 ₽"><b>Шаблон</b><span class="pr">3 500 ₽</span><small>готовый стиль, 1–2 дня</small></label>
+      <label class="topt sel"><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт ⭐</b><span class="pr">5 900 ₽</span><small>палитра под вас, фото, 2–3 дня</small></label>
+      <label class="topt"><input type="radio" name="tariff" value="Индивидуальный — от 14900 ₽"><b>Индивидуальный</b><span class="pr">от 14 900 ₽</span><small>уникальный дизайн</small></label>
+    </div>
+    <label class="f" style="margin-top:16px;"><span>Как с вами связаться? * <small>(телефон или ник в Telegram)</small></span><input type="text" name="contact" placeholder="+7 900 000-00-00 или @nickname"></label>
+    <label class="f"><span>Комментарий <small>(музыка, фото, особые пожелания — по желанию)</small></span><textarea name="comment" placeholder=""></textarea></label>
+  </div>
+
+  <div class="send">
+    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+    <div class="or">или продублируйте вручную:</div>
+    <button type="button" class="btn btn-ghost" id="copyBtn">Скопировать заявку</button>
+    <a class="btn btn-ghost" id="tgBtn" href="https://t.me/foasya" target="_blank" rel="noopener">Написать в Telegram</a><!-- ✏️ твой ник -->
+    <div id="status"></div>
+  </div>
+</form>
+
+<div class="done" id="done">
+  <h2>Заявка отправлена 🤍</h2>
+  <p>Спасибо! Свяжусь с вами в течение дня — уточним детали, и через 1–2 дня пришлю ссылку на ваш готовый сайт.</p>
+  <p style="margin-top:10px;"><a class="back" href="./index.html">← посмотреть стили ещё раз</a></p>
 </div>
+</div>
+
 <script>
-function copyBrief(){
-  const parts=['БРИФ — САЙТ-ПРИГЛАШЕНИЕ',''];
-  document.querySelectorAll('[data-q]').forEach(el=>{
-    const v=(el.value||'').trim();
-    if(v) parts.push(el.getAttribute('data-q')+': '+v);
-  });
-  const text=parts.join('\n');
-  navigator.clipboard.writeText(text).then(()=>{
-    document.getElementById('ok').textContent='Скопировано — вставьте в сообщение и отправьте ✓';
-  },()=>{
-    document.getElementById('ok').textContent='Выделите и скопируйте вручную:';
-    const ta=document.createElement('textarea');ta.value=text;ta.style.width='100%';ta.style.height='160px';ta.style.marginTop='10px';
-    document.querySelector('.actions').appendChild(ta);ta.select();
+/* ✏️ РАЗОВАЯ НАСТРОЙКА: URL веб-приложения Apps Script (см. docs/приём_заявок.md).
+   Пока пусто — форма работает через «Скопировать заявку» + Telegram. */
+const BRIEF_URL = '';
+
+const STYLES = [
+ ["bordo","Бордо / кардио",["#D4A0AB","#7B1C2E","#1E1A1B"]],
+ ["nude","Нюд / шампань",["#ECDCC2","#C9A98A","#8C6E52"]],
+ ["green","Эвкалипт / зелень",["#DCE4D2","#A9B78F","#556042"]],
+ ["minimal","Минимал ч/б",["#FFFFFF","#8C8C8C","#111111"]],
+ ["blush","Пудра / розовое золото",["#F3DCDE","#D98C99","#B76E79"]],
+ ["dusty","Дасти блю / небо",["#DFE8F0","#AFC3D6","#4C637B"]],
+ ["terra","Терракота / бохо",["#F1DFC8","#C4653A","#8A5A44"]],
+ ["noir","Тёмный люкс / золото",["#0E0C0A","#C9A24B","#D9CDB6"]],
+ ["royal","Изумруд / золото",["#0F3B32","#D9B45B","#F2E7CE"]],
+ ["deco","Ар-деко / Гэтсби",["#14141C","#D8B45A","#EDE3CF"]],
+ ["aurora","Живой градиент",["#8E7BF0","#E08BB4","#F0B98B"]],
+ ["cacao","Шоколад / латте",["#EBD8BF","#A8713F","#5C3A21"]],
+ ["gazette","Газета / спецвыпуск",["#F1EBDC","#B3261E","#1F1D18"]],
+ ["neon","Неон / вечеринка",["#0B0D13","#FF2E88","#38E5FF"]],
+ ["cosmos","Космос / созвездие",["#0A0F22","#8FB0FF","#C8D6FF"]],
+ ["voyage","Авиабилет / путешествие",["#E8F1F8","#1B6FA8","#0E3A57"]],
+ ["vogue","Глянец / обложка",["#FFFFFF","#C8102E","#141414"]],
+ ["aquarelle","Акварель / нежность",["#DEE7F5","#F3DCE4","#CBB9DD"]],
+ ["vinyl","Винил / ретро-музыка",["#F0E6D2","#C75146","#221D18"]],
+ ["scrap","Скрапбук / альбом",["#F3E9D5","#3E6C94","#C97F6B"]],
+];
+/* точные отображаемые имена тем в конструкторе — для файла проекта */
+const THEME_LABELS = {bordo:"Бордо / кардио",nude:"Нюд / шампань (конверт)",green:"Эвкалипт / зелень (история)",
+ minimal:"Минимал ч/б",blush:"Пудра / розовое золото",dusty:"Дасти блю / небо",terra:"Терракота / бохо (фестиваль)",
+ noir:"Тёмный люкс / золото (кино)",royal:"Изумруд / золото (люкс)",deco:"Ар-деко / Гэтсби (20-е)",
+ aurora:"Живой градиент (модерн)",cacao:"Шоколад / латте (тепло)",gazette:"Газета / спецвыпуск",
+ neon:"Неон / вечеринка (ночь)",cosmos:"Космос / созвездие (ночь)",voyage:"Авиабилет / путешествие",
+ vogue:"Глянец / обложка журнала",aquarelle:"Акварель / нежность",vinyl:"Винил / ретро-музыка",scrap:"Скрапбук / альбом"};
+
+const sgrid = document.getElementById('sgrid');
+sgrid.innerHTML = STYLES.map(([k,name,dots],i)=>`
+ <label class="sopt${i===0?' sel':''}">
+   <input type="radio" name="style" value="${k}" ${i===0?'checked':''}>
+   <span class="dots">${dots.map(d=>`<i style="background:${d}"></i>`).join('')}</span>
+   <span class="nm">${name}</span>
+   <a href="./demo-${k}.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">демо ↗</a>
+ </label>`).join('');
+
+function bindSel(containerSel, optSel){
+  document.querySelectorAll(containerSel+' '+optSel).forEach(o=>{
+    o.addEventListener('click',()=>{
+      document.querySelectorAll(containerSel+' '+optSel).forEach(x=>x.classList.remove('sel'));
+      o.classList.add('sel'); o.querySelector('input').checked = true;
+    });
   });
 }
+bindSel('#sgrid','.sopt'); bindSel('#tarifs','.topt');
+
+const F = document.getElementById('brief');
+const val = n => { const el=F.elements[n]; if(!el) return '';
+  return (el.value!==undefined? el.value : '').trim(); };
+const tariffVal = () => [...F.elements.tariff].find(r=>r.checked)?.value || '';
+const styleVal  = () => [...F.elements.style].find(r=>r.checked)?.value || 'bordo';
+
+function validate(){
+  let first=null;
+  ['n1','n2','date','time','city','p1a','p2a','contact'].forEach(n=>{
+    const el=F.elements[n]; el.classList.remove('bad');
+    if(!val(n)){ el.classList.add('bad'); first=first||el; } });
+  if(val('date') && !/^\d{2}\.\d{2}\.\d{4}$/.test(val('date'))){ F.elements.date.classList.add('bad'); first=first||F.elements.date; }
+  if(val('time') && !/^\d{1,2}:\d{2}$/.test(val('time'))){ F.elements.time.classList.add('bad'); first=first||F.elements.time; }
+  if(val('rsvp') && !/^\d{2}\.\d{2}\.\d{4}$/.test(val('rsvp'))){ F.elements.rsvp.classList.add('bad'); first=first||F.elements.rsvp; }
+  if(first){ first.scrollIntoView({block:'center',behavior:'smooth'}); first.focus(); }
+  return !first;
+}
+
+function buildProject(){
+  const key = styleVal();
+  const t = val('time')||'15:00', bT = val('p2w')||'17:00', cT = val('p1w')||t;
+  return {
+    version:1,
+    theme: THEME_LABELS[key],
+    fields:{
+      n1:val('n1'), n2:val('n2'), date:val('date'), time:t,
+      rsvp: val('rsvp')||val('date'), city:val('city'),
+      p1n:"Церемония", p1a:val('p1a'), p1w:cT, p1note:val('p1note'),
+      p2n:"Банкет", p2a:val('p2a'), p2w:bT, city2:val('city2'),
+      t1t:t, t1n:"Сбор гостей", t1d:"Просим быть на месте к этому времени.",
+      t2t:cT, t2n:"Церемония", t2d:"Торжественная регистрация и фотосессия.",
+      t3t:bT, t3n:"Банкет", t3d:"Вкусные блюда и тёплые тосты.",
+      t4t:"21:00", t4n:"Торт", t4d:"Самый сладкий момент вечера.",
+      w1:val('w1'), w2:val('w2')
+    },
+    photo:null, gallery:[], audio:null
+  };
+}
+
+function buildText(){
+  const key=styleVal();
+  const name=(STYLES.find(s=>s[0]===key)||[])[1]||key;
+  return [
+    "🆕 ЗАЯВКА НА САЙТ-ПРИГЛАШЕНИЕ","",
+    "Тариф: "+tariffVal(),
+    "Стиль: "+name,
+    "Пара: "+val('n1')+" и "+val('n2'),
+    "Дата: "+val('date')+" "+val('time'),
+    "Город: "+val('city'),
+    "Церемония: "+val('p1a')+(val('p1w')?" · "+val('p1w'):"")+(val('p1note')?" ("+val('p1note')+")":""),
+    "Банкет: "+val('p2a')+(val('p2w')?" · "+val('p2w'):"")+(val('city2')?" ("+val('city2')+")":""),
+    "Ответы до: "+(val('rsvp')||"—"),
+    "Контакт: "+val('contact'),
+    val('comment')?("Комментарий: "+val('comment')):"",
+    "","── ФАЙЛ ПРОЕКТА (в конструкторе: Проект → Вставить бриф из буфера) ──",
+    JSON.stringify(buildProject())
+  ].filter(Boolean).join("\n");
+}
+
+const status=document.getElementById('status');
+function show(msg, ok){ status.textContent=msg; status.className= ok?'ok':'err'; }
+
+document.getElementById('copyBtn').addEventListener('click', async ()=>{
+  if(!validate()){ show('Заполните поля, отмеченные красным', false); return; }
+  try{ await navigator.clipboard.writeText(buildText()); show('Скопировано! Теперь вставьте в чат Telegram →', true); }
+  catch(e){ prompt('Скопируйте текст заявки:', buildText()); }
+});
+
+F.addEventListener('submit', async ev=>{
+  ev.preventDefault();
+  if(!validate()){ show('Заполните поля, отмеченные красным', false); return; }
+  const payload={ type:'brief',
+    tariff:tariffVal(), style:styleVal(),
+    styleName:(STYLES.find(s=>s[0]===styleVal())||[])[1],
+    n1:val('n1'), n2:val('n2'), date:val('date'), time:val('time'), city:val('city'),
+    p1a:val('p1a'), p1w:val('p1w'), p1note:val('p1note'),
+    p2a:val('p2a'), p2w:val('p2w'), city2:val('city2'),
+    rsvp:val('rsvp'), w1:val('w1'), w2:val('w2'),
+    contact:val('contact'), comment:val('comment'),
+    project: JSON.stringify(buildProject())
+  };
+  if(!BRIEF_URL){
+    try{ await navigator.clipboard.writeText(buildText()); }catch(e){}
+    show('Заявка скопирована — открываю Telegram, просто вставьте её в чат', true);
+    setTimeout(()=>window.open(document.getElementById('tgBtn').href,'_blank'), 900);
+    return;
+  }
+  show('Отправляю…', true);
+  try{
+    await fetch(BRIEF_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});
+    F.style.display='none';
+    document.getElementById('done').style.display='block';
+    scrollTo({top:0,behavior:'smooth'});
+  }catch(e){
+    show('Не отправилось — нажмите «Скопировать заявку» и пришлите в Telegram', false);
+  }
+});
 </script>
 </body>
 </html>

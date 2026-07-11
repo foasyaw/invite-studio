@@ -128,11 +128,13 @@
   <div class="step">
     <h2><span class="n">5</span>Тариф и связь</h2>
     <div class="tarifs" id="tarifs">
-      <label class="topt"><input type="radio" name="tariff" value="Шаблон — 3500 ₽"><b>Шаблон</b><span class="pr">3 500 ₽</span><small>готовый стиль, 1–2 дня</small></label>
-      <label class="topt sel"><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт ⭐</b><span class="pr">5 900 ₽</span><small>палитра под вас, фото, 2–3 дня</small></label>
-      <label class="topt"><input type="radio" name="tariff" value="Индивидуальный — от 14900 ₽"><b>Индивидуальный</b><span class="pr">от 14 900 ₽</span><small>уникальный дизайн</small></label>
+      <label class="topt"><input type="radio" name="tariff" value="Шаблон — 3500 ₽"><b>Шаблон</b><span class="pr">3 500 ₽</span><small>стиль как в демо + ваши данные · 1–2 дня</small></label>
+      <label class="topt sel"><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт ⭐</b><span class="pr">5 900 ₽</span><small>подогнан под вас: цвета, фото, правки · 2–3 дня</small></label>
+      <label class="topt"><input type="radio" name="tariff" value="Индивидуальный — от 14900 ₽"><b>Индивидуальный</b><span class="pr">от 14 900 ₽</span><small>дизайн с нуля под вашу идею</small></label>
     </div>
+    <p style="font-size:12.5px;color:#9a9186;margin-top:10px;line-height:1.5;">Не уверены? Возьмите «Стандарт» — сайт подгоняется под ваши цвета и фото, с правками. Тариф можно изменить при согласовании.</p>
     <label class="f" style="margin-top:16px;"><span>Как с вами связаться? * <small>(телефон или ник в Telegram)</small></span><input type="text" name="contact" placeholder="+7 900 000-00-00 или @nickname"></label>
+    <label class="f"><span>E-mail <small>(по желанию — пришлём подтверждение заявки)</small></span><input type="email" name="email" placeholder="you@example.com"></label>
     <label class="f"><span>Комментарий <small>(музыка, фото, особые пожелания — по желанию)</small></span><textarea name="comment" placeholder=""></textarea></label>
   </div>
 
@@ -284,7 +286,7 @@ F.addEventListener('submit', async ev=>{
     p1a:val('p1a'), p1w:val('p1w'), p1note:val('p1note'),
     p2a:val('p2a'), p2w:val('p2w'), city2:val('city2'),
     rsvp:val('rsvp'), w1:val('w1'), w2:val('w2'),
-    contact:val('contact'), comment:val('comment'),
+    contact:val('contact'), email:val('email'), comment:val('comment'),
     project: JSON.stringify(buildProject())
   };
   if(!BRIEF_URL){

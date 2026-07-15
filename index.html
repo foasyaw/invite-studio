@@ -21,6 +21,7 @@
     --gold:#B08D3E; --gold-deep:#8C6E2C; --gold-soft:#DCC79A; --tint:rgba(176,141,62,.07);
     --shadow:0 30px 70px -46px rgba(30,26,21,.5);
     --ease:cubic-bezier(.22,.61,.36,1);
+    --fanease:cubic-bezier(.34,1.28,.5,1);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:74px;}
@@ -120,6 +121,30 @@
   .scard .body p{color:var(--muted);font-weight:300;font-size:13px;margin:6px 0 12px;min-height:36px;}
   .scard .go{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--a);transition:letter-spacing .2s;}
   .scard:hover .go{letter-spacing:2.5px;}
+
+  /* ── ВЕЕР СТИЛЕЙ ── */
+  .fan-wrap{margin-top:26px;}
+  .fan{position:relative;height:clamp(340px,46vh,500px);max-width:80rem;margin:0 auto;overflow:hidden;}
+  .fan-card{position:absolute;left:50%;top:50%;width:clamp(150px,17vw,224px);aspect-ratio:33/48;border-radius:20px;overflow:hidden;cursor:pointer;opacity:0;transform:translate(-50%,-50%) scale(.4);transition:transform .6s var(--fanease),opacity .5s ease,box-shadow .3s ease;will-change:transform,opacity;box-shadow:0 28px 55px -24px rgba(30,26,21,.5);}
+  .fan-card::after{content:'';position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(30,26,21,.10);pointer-events:none;}
+  .fan-card.is-center{box-shadow:0 40px 80px -28px rgba(30,26,21,.62),0 0 0 1px rgba(176,141,62,.35);}
+  .fan-face{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;position:relative;padding:16px;}
+  .fan-face .fmono{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-size:clamp(26px,2.4vw,36px);display:flex;align-items:center;gap:8px;letter-spacing:.5px;line-height:1;}
+  .fan-face .fmono i{font-style:italic;opacity:.72;font-size:.68em;}
+  .fan-face .frule{width:38px;height:1px;background:currentColor;opacity:.4;}
+  .fan-face .fdots{display:flex;gap:6px;}
+  .fan-face .fdots i{width:11px;height:11px;border-radius:50%;box-shadow:0 2px 5px -2px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.5);}
+  .fan-face .fnm{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:11.5px;letter-spacing:.4px;opacity:.85;padding:0 10px;}
+  .fan-name{text-align:center;margin:22px auto 0;min-height:56px;max-width:520px;padding:0 22px;}
+  .fan-name h3{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-size:clamp(23px,3vw,32px);line-height:1.1;}
+  .fan-name p{color:var(--muted);font-weight:300;font-size:14px;margin-top:5px;}
+  .fan-ctrl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px;}
+  .fan-arrow{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--gold-deep);font-size:24px;line-height:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s,color .2s,border-color .2s;padding-bottom:3px;}
+  .fan-arrow:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-2px);}
+  .fan-dots{display:flex;gap:6px;flex-wrap:wrap;max-width:280px;justify-content:center;}
+  .fan-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:transform .3s,background .3s;cursor:pointer;}
+  .fan-dots i.on{background:var(--gold-deep);transform:scale(1.45);}
+  .fan-open{text-align:center;margin-top:22px;}
 
   /* ── НАШИ РАБОТЫ ── */
   .work{display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center;max-width:940px;margin:0 auto;}
@@ -338,14 +363,23 @@
 </section>
 
 <!-- ══════════ СТИЛИ ══════════ -->
-<section class="blk" id="styles" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+<section class="blk" id="styles" style="background:radial-gradient(120% 80% at 50% 0%,var(--tint),transparent 60%),var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Двадцать стилей</span>
       <h2>Выберите настроение</h2>
-      <p>От нежной классики до неона, космоса и газетной полосы. Любой можно подстроить под вашу палитру.</p>
+      <p>Листайте колоду — стрелками, свайпом или кликом по карте. От нежной классики до неона, космоса и газетной полосы.</p>
     </div>
-    <div class="styles" id="grid"></div>
+  </div>
+  <div class="fan-wrap reveal">
+    <div class="fan" id="fan"></div>
+    <div class="fan-name" id="fanName"></div>
+    <div class="fan-ctrl">
+      <button class="fan-arrow" id="fanPrev" type="button" aria-label="Предыдущий стиль">‹</button>
+      <div class="fan-dots" id="fanDots"></div>
+      <button class="fan-arrow" id="fanNext" type="button" aria-label="Следующий стиль">›</button>
+    </div>
+    <div class="fan-open"><a class="btn btn-primary magnetic" id="fanOpen" href="#" target="_blank" rel="noopener">Открыть демо ↗</a></div>
   </div>
 </section>
 
@@ -511,23 +545,78 @@ const STYLES=[
  ["vinyl","Винил / ретро-музыка","Крутящаяся пластинка, программа-треклист","#C75146",["#F0E6D2","#C75146","#221D18"]],
  ["scrap","Скрапбук / альбом","Полароид на скотче, рукописные заметки","#3E6C94",["#F3E9D5","#3E6C94","#C97F6B"]],
 ];
-const grid=document.getElementById('grid');
 const lum=hex=>{const c=hex.replace('#','');return (0.2126*parseInt(c.slice(0,2),16)+0.7152*parseInt(c.slice(2,4),16)+0.0722*parseInt(c.slice(4,6),16))/255;};
-grid.innerHTML=STYLES.map(([k,name,desc,a,dots])=>{
-  const dark=lum(dots[0])<0.5;
-  const ink=dark?dots[2]:a;
-  const bg=dark
-    ? `radial-gradient(120% 110% at 50% -10%, ${a}66, transparent 62%), ${dots[0]}`
-    : `radial-gradient(120% 110% at 50% -12%, ${a}22, transparent 60%), linear-gradient(160deg,#fff,${dots[0]})`;
-  return `
-  <a class="scard" style="--a:${a}" href="./demo-${k}.html" target="_blank" rel="noopener">
-    <div class="top" style="background:${bg};color:${ink}">
-      <div class="mono">А <i>&amp;</i> А</div>
-      <div class="rule"></div>
-      <div class="dots">${dots.map(d=>`<i style="background:${d}"></i>`).join('')}</div>
-    </div>
-    <div class="body"><h3>${name}</h3><p>${desc}</p><span class="go">Смотреть демо →</span></div>
-  </a>`;}).join('');
+
+// ── ВЕЕР СТИЛЕЙ (порт fan-carousel на ваниль) ──
+(function(){
+  const fan=document.getElementById('fan'); if(!fan) return;
+  const FAN=[{rot:-21,scale:.7756,x:-30,y:7.3,z:1},{rot:-14,scale:.8498,x:-22,y:4,z:2},{rot:-7,scale:.9346,x:-11,y:1.3,z:3},{rot:0,scale:1,x:0,y:0,z:10},{rot:7,scale:.9346,x:11,y:1.3,z:3},{rot:14,scale:.8498,x:22,y:4,z:2},{rot:21,scale:.7756,x:30,y:7.3,z:1}];
+  const N=STYLES.length, MV=7, H=3;
+  const RMx=(typeof RM!=='undefined')?RM:matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const respMult=w=>w<480?.3:w<640?.4:w<768?.55:w<1024?.78:1;
+  const nameEl=document.getElementById('fanName'), openEl=document.getElementById('fanOpen'), dotsEl=document.getElementById('fanDots');
+
+  const els=STYLES.map(([k,name,desc,a,dots],i)=>{
+    const dark=lum(dots[0])<0.5, ink=dark?dots[2]:a;
+    const bg=dark
+      ? `radial-gradient(120% 110% at 50% -10%, ${a}66, transparent 62%), ${dots[0]}`
+      : `radial-gradient(120% 110% at 50% -12%, ${a}22, transparent 60%), linear-gradient(160deg,#fff,${dots[0]})`;
+    const el=document.createElement('div');
+    el.className='fan-card'; el.style.background=bg; el.style.color=ink; el.dataset.i=i;
+    el.innerHTML=`<div class="fan-face"><div class="fmono">А <i>&amp;</i> А</div><div class="frule"></div><div class="fdots">${dots.map(d=>`<i style="background:${d}"></i>`).join('')}</div><div class="fnm">${name}</div></div>`;
+    fan.appendChild(el); return el;
+  });
+
+  dotsEl.innerHTML=STYLES.map((_,i)=>`<i data-i="${i}"></i>`).join('');
+  const dotEls=[...dotsEl.children];
+
+  let center=H, hovered=null;
+  const vmap=c=>{const m={};for(let s=0;s<MV;s++){m[((c+s-H)%N+N)%N]=s;}return m;};
+
+  function layout(){
+    const mult=respMult(innerWidth), yM=innerWidth<768?.62:.82, m=vmap(center);
+    els.forEach((el,i)=>{
+      const slot=m[i];
+      if(slot!==undefined){
+        const p=FAN[slot]; let x=p.x*mult, y=p.y*yM, rot=p.rot, sc=p.scale, z=p.z;
+        if(hovered!==null){
+          if(slot===hovered){ y-=2.2*yM; sc*=1.08; z=20; }
+          else { x += (slot<hovered?-1:1)*3*mult; }
+        }
+        el.style.opacity=1; el.style.pointerEvents='auto'; el.style.zIndex=z;
+        el.style.transform=`translate(-50%,-50%) translate(${x}rem,${y}rem) rotate(${rot}deg) scale(${sc})`;
+        el.classList.toggle('is-center', slot===H && hovered===null);
+      } else {
+        el.style.opacity=0; el.style.pointerEvents='none'; el.style.zIndex=0;
+        el.style.transform='translate(-50%,-50%) scale(.4)';
+        el.classList.remove('is-center');
+      }
+    });
+    const cs=STYLES[center];
+    nameEl.innerHTML=`<h3>${cs[1]}</h3><p>${cs[2]}</p>`;
+    openEl.href=`./demo-${cs[0]}.html`;
+    dotEls.forEach((d,i)=>d.classList.toggle('on',i===center));
+  }
+  const go=dir=>{ center=(center+(dir>0?1:-1)+N)%N; hovered=null; layout(); };
+
+  document.getElementById('fanPrev').addEventListener('click',()=>go(-1));
+  document.getElementById('fanNext').addEventListener('click',()=>go(1));
+  dotEls.forEach(d=>d.addEventListener('click',()=>{center=+d.dataset.i;hovered=null;layout();}));
+  els.forEach((el,i)=>{
+    el.addEventListener('click',()=>{ if(i===center){ window.open(openEl.href,'_blank','noopener'); } else { center=i; hovered=null; layout(); } });
+    if(matchMedia('(pointer:fine)').matches){
+      el.addEventListener('mouseenter',()=>{const s=vmap(center)[i]; if(s!==undefined){hovered=s;layout();}});
+      el.addEventListener('mouseleave',()=>{hovered=null;layout();});
+    }
+  });
+  let sx=null;
+  fan.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  fan.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);sx=null;},{passive:true});
+  let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(layout,120);});
+
+  if(RMx){ layout(); }
+  else { new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){layout();o.disconnect();}});},{threshold:.15}).observe(fan); }
+})();
 
 // ── переключатель стилей в телефоне ──
 const sw=document.getElementById('sw'), preview=document.getElementById('preview');

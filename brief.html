@@ -31,33 +31,39 @@
   .step h2 .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;font-family:'Plus Jakarta Sans';font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;}
   .hint{font-size:13px;color:var(--faint);margin:-8px 0 14px;}
 
-  .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
-  .sopt{position:relative;border:2px solid var(--line);border-radius:1rem;padding:12px 10px 10px;cursor:pointer;text-align:center;background:var(--paper);transition:border-color .2s,transform .2s;}
-  .sopt:hover{transform:translateY(-2px);}
+  .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px;}
+  .sopt{position:relative;border:1px solid var(--line);border-radius:1rem;padding:0 0 13px;cursor:pointer;text-align:center;background:var(--card);overflow:hidden;box-shadow:0 2px 3px rgba(0,0,0,.05);transition:border-color .2s,transform .2s,box-shadow .2s;}
+  .sopt:hover{transform:translateY(-3px);box-shadow:0 2px 3px rgba(0,0,0,.06),0 16px 30px -18px rgba(36,43,29,.28);border-color:var(--sage-soft,#DEE5D6);}
   .sopt input{position:absolute;opacity:0;pointer-events:none;}
-  .sopt .dots{display:flex;gap:5px;justify-content:center;margin-bottom:8px;}
-  .sopt .dots i{width:14px;height:14px;border-radius:50%;box-shadow:0 1px 4px -1px rgba(0,0,0,.35);}
-  .sopt .nm{font-size:12.5px;font-weight:500;line-height:1.25;display:block;}
-  .sopt a{display:inline-block;font-size:11px;color:var(--gold-deep);margin-top:5px;}
-  .sopt.sel{border-color:var(--gold);background:var(--tint);}
+  .sopt .sw{display:block;height:62px;margin-bottom:12px;}
+  .sopt .nm{font-size:13px;font-weight:600;letter-spacing:-.01em;line-height:1.25;display:block;padding:0 8px;}
+  .sopt a{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--gold);margin-top:6px;text-decoration:none;}
+  .sopt a:hover{text-decoration:underline;}
+  .sopt.sel{border-color:var(--gold);box-shadow:0 0 0 1.5px var(--gold),0 16px 30px -18px rgba(36,43,29,.3);}
+  .sopt .check{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:none;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.25);}
+  .sopt.sel .check{display:flex;}
 
   label.f{display:block;margin-bottom:14px;}
   label.f span{display:block;font-size:13px;font-weight:500;margin-bottom:5px;}
   label.f small{color:var(--faint);font-weight:400;}
-  input[type=text],textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:15px;background:var(--paper);color:var(--ink);transition:border-color .2s;}
-  input:focus,textarea:focus{outline:none;border-color:var(--gold);}
-  input.bad{border-color:var(--err);}
-  textarea{resize:vertical;min-height:64px;}
+  .wrap input:not([type=radio]):not([type=checkbox]),.wrap textarea,.wrap select{width:100%;min-height:48px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px;background:var(--card);color:var(--ink);transition:border-color .2s,box-shadow .2s;}
+  .wrap input::placeholder,.wrap textarea::placeholder{color:#BFBFB8;}
+  .wrap input:focus,.wrap textarea:focus,.wrap select:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px var(--tint);}
+  .wrap input.bad,.wrap textarea.bad{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,25,31,.12);}
+  textarea{resize:vertical;min-height:84px;line-height:1.55;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   @media(max-width:560px){.row2{grid-template-columns:1fr;}}
 
   .tarifs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
-  .topt{position:relative;border:2px solid var(--line);border-radius:1rem;padding:14px;cursor:pointer;background:var(--paper);transition:border-color .2s;}
+  .topt{position:relative;border:1px solid var(--line);border-radius:1rem;padding:18px 16px;cursor:pointer;background:var(--card);box-shadow:0 2px 3px rgba(0,0,0,.05);transition:border-color .2s,transform .2s,box-shadow .2s;}
+  .topt:hover{transform:translateY(-3px);box-shadow:0 2px 3px rgba(0,0,0,.06),0 16px 30px -18px rgba(36,43,29,.28);}
   .topt input{position:absolute;opacity:0;}
-  .topt b{display:block;font-size:15px;}
-  .topt .pr{font-family:'Lora',Georgia,serif;font-size:24px;color:var(--gold-deep);display:block;}
-  .topt small{color:var(--muted);font-weight:300;font-size:12px;}
-  .topt.sel{border-color:var(--gold);background:var(--tint);}
+  .topt b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em;}
+  .topt .pr{font-family:'Lora',Georgia,serif;font-size:26px;color:var(--ink);display:block;margin:4px 0 6px;letter-spacing:-.02em;}
+  .topt small{color:var(--muted);font-weight:300;font-size:12.5px;line-height:1.4;display:block;}
+  .topt.sel{border-color:var(--gold);box-shadow:0 0 0 1.5px var(--gold),0 16px 30px -18px rgba(36,43,29,.3);}
+  .topt .check{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:none;align-items:center;justify-content:center;font-size:12px;}
+  .topt.sel .check{display:flex;}
 
   .send{margin-top:26px;text-align:center;}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--sage);border-radius:999px;padding:16px 34px;font:600 13px 'Plus Jakarta Sans';letter-spacing:.02em;cursor:pointer;transition:all .2s;text-decoration:none;margin:4px;}
@@ -131,9 +137,9 @@
   <div class="step">
     <h2><span class="n">5</span>Тариф и связь</h2>
     <div class="tarifs" id="tarifs">
-      <label class="topt"><input type="radio" name="tariff" value="Шаблон — 3500 ₽"><b>Шаблон</b><span class="pr">3 500 ₽</span><small>стиль как в демо + ваши данные · 1–2 дня</small></label>
-      <label class="topt sel"><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт ⭐</b><span class="pr">5 900 ₽</span><small>подогнан под вас: цвета, фото, правки · 2–3 дня</small></label>
-      <label class="topt"><input type="radio" name="tariff" value="Индивидуальный — от 14900 ₽"><b>Индивидуальный</b><span class="pr">от 14 900 ₽</span><small>дизайн с нуля под вашу идею</small></label>
+      <label class="topt"><input type="radio" name="tariff" value="Шаблон — 3500 ₽"><b>Шаблон</b><span class="pr">3 500 ₽</span><small>стиль как в демо + ваши данные · 1–2 дня</small><span class="check">✓</span></label>
+      <label class="topt sel"><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт ⭐</b><span class="pr">5 900 ₽</span><small>подогнан под вас: цвета, фото, правки · 2–3 дня</small><span class="check">✓</span></label>
+      <label class="topt"><input type="radio" name="tariff" value="Индивидуальный — от 14900 ₽"><b>Индивидуальный</b><span class="pr">от 14 900 ₽</span><small>дизайн с нуля под вашу идею</small><span class="check">✓</span></label>
     </div>
     <p style="font-size:12.5px;color:#9a9186;margin-top:10px;line-height:1.5;">Не уверены? Возьмите «Стандарт» — сайт подгоняется под ваши цвета и фото, с правками. Тариф можно изменить при согласовании.</p>
     <label class="f" style="margin-top:16px;"><span>Как с вами связаться? * <small>(телефон или ник в Telegram)</small></span><input type="text" name="contact" placeholder="+7 900 000-00-00 или @nickname"></label>
@@ -196,9 +202,10 @@ const sgrid = document.getElementById('sgrid');
 sgrid.innerHTML = STYLES.map(([k,name,dots],i)=>`
  <label class="sopt${i===0?' sel':''}">
    <input type="radio" name="style" value="${k}" ${i===0?'checked':''}>
-   <span class="dots">${dots.map(d=>`<i style="background:${d}"></i>`).join('')}</span>
+   <span class="sw" style="background:linear-gradient(135deg,${dots[0]} 0%,${dots[1]||dots[0]} 52%,${dots[2]||dots[0]} 100%)"></span>
    <span class="nm">${name}</span>
    <a href="./demo-${k}.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">демо ↗</a>
+   <span class="check">✓</span>
  </label>`).join('');
 
 function bindSel(containerSel, optSel){

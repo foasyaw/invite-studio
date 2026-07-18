@@ -64,6 +64,8 @@
   .topt.sel{border-color:var(--gold);box-shadow:0 0 0 1.5px var(--gold),0 16px 30px -18px rgba(36,43,29,.3);}
   .topt .check{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:none;align-items:center;justify-content:center;font-size:12px;}
   .topt.sel .check{display:flex;}
+  .topt .pop{position:absolute;top:-10px;left:16px;background:var(--gold);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
+  .topt.pro{border-color:var(--sage);}
 
   .send{margin-top:26px;text-align:center;}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--sage);border-radius:999px;padding:16px 34px;font:600 13px 'Plus Jakarta Sans';letter-spacing:.02em;cursor:pointer;transition:all .2s;text-decoration:none;margin:4px;}
@@ -138,7 +140,7 @@
     <h2><span class="n">5</span>Тариф и связь</h2>
     <div class="tarifs" id="tarifs">
       <label class="topt"><input type="radio" name="tariff" value="Шаблон — 3500 ₽"><b>Шаблон</b><span class="pr">3 500 ₽</span><small>стиль как в демо + ваши данные · 1–2 дня</small><span class="check">✓</span></label>
-      <label class="topt sel"><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт ⭐</b><span class="pr">5 900 ₽</span><small>подогнан под вас: цвета, фото, правки · 2–3 дня</small><span class="check">✓</span></label>
+      <label class="topt pro sel"><span class="pop">популярный</span><input type="radio" name="tariff" value="Стандарт — 5900 ₽" checked><b>Стандарт</b><span class="pr">5 900 ₽</span><small>подогнан под вас: цвета, фото, правки · 2–3 дня</small><span class="check">✓</span></label>
       <label class="topt"><input type="radio" name="tariff" value="Индивидуальный — от 14900 ₽"><b>Индивидуальный</b><span class="pr">от 14 900 ₽</span><small>дизайн с нуля под вашу идею</small><span class="check">✓</span></label>
     </div>
     <p style="font-size:12.5px;color:#9a9186;margin-top:10px;line-height:1.5;">Не уверены? Возьмите «Стандарт» — сайт подгоняется под ваши цвета и фото, с правками. Тариф можно изменить при согласовании.</p>
